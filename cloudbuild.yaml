@@ -19,16 +19,16 @@ steps:
       - "--region"
       - "asia-northeast1"
 
-  - name: "bash"
-    args: ["echo", "Hello, World!"]
-  - name: "bash"
-    args: ["pwd"]
-  - name: "bash"
-    args: ["ls", "-al"]
-  - name: "bash"
-    args: ["touch", "building.txt"]
-  - name: "bash"
-    args: ["ls", "-al"]
+  # - name: "bash"
+  #   args: ["echo", "Hello, World!"]
+  # - name: "bash"
+  #   args: ["pwd"]
+  # - name: "bash"
+  #   args: ["ls", "-al"]
+  # - name: "bash"
+  #   args: ["touch", "building.txt"]
+  # - name: "bash"
+  #   args: ["ls", "-al"]
 
   timeout: 500s
   options:
