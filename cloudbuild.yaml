@@ -1,12 +1,12 @@
 steps:
   # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '-t', 'asia-northeast1-docker.pkg.dev/$PROJECT_ID/practice/python-image', '.' ]
+    args: [ 'build', '-t', 'asia-northeast1-docker.pkg.dev/$PROJECT_ID/practice/python-image:$COMMIT_SHA', '.' ]
 
     # Docker Push
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push',
-           'asia-northeast1-docker.pkg.dev/$PROJECT_ID/practice/python-image']
+           'asia-northeast1-docker.pkg.dev/$PROJECT_ID/practice/python-image:$COMMIT_SHA']
 
   # Artifact RegistryのコンテナイメージをCloud Runにデプロイ
   - name: "gcr.io/cloud-builders/gcloud"
@@ -15,20 +15,23 @@ steps:
       - "deploy"
       - "p-python"
       - "--image"
-      - "asia-northeast1-docker.pkg.dev/${PROJECT_ID}/practice/python-image"
+      - "asia-northeast1-docker.pkg.dev/${PROJECT_ID}/practice/python-image:$COMMIT_SHA"
       - "--region"
       - "asia-northeast1"
+  
+  images:
+  - 'asia-northeast1-docker.pkg.dev/$PROJECT_ID/practice/python-image:$COMMIT_SHA'
 
-  # - name: "bash"
-  #   args: ["echo", "Hello, World!"]
-  # - name: "bash"
-  #   args: ["pwd"]
-  # - name: "bash"
-  #   args: ["ls", "-al"]
-  # - name: "bash"
-  #   args: ["touch", "building.txt"]
-  # - name: "bash"
-  #   args: ["ls", "-al"]
+  - name: "bash"
+    args: ["echo", "Hello, World!"]
+  - name: "bash"
+    args: ["pwd"]
+  - name: "bash"
+    args: ["ls", "-al"]
+  - name: "bash"
+    args: ["touch", "building.txt"]
+  - name: "bash"
+    args: ["ls", "-al"]
 
   timeout: 500s
   options:
