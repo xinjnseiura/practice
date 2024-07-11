@@ -39,8 +39,8 @@ steps:
   - name: "bash"
     args: ["ls", "-al"]
 
-  - images:
-      - "asia-northeast1-docker.pkg.dev/$PROJECT_ID/practice/python-image:$COMMIT_SHA"
+  images:
+    - "asia-northeast1-docker.pkg.dev/$PROJECT_ID/practice/python-image:$COMMIT_SHA"
   - timeout: 500s
   - options:
     logging: CLOUD_LOGGING_ONLY #サービスアカウントを指定するので、ログ保存先を制限
