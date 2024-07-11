@@ -35,6 +35,17 @@ steps:
     id: Deploy
     entrypoint: gcloud
 
+  - name: "bash"
+    args: ["echo", "Hello, World!"]
+  - name: "bash"
+    args: ["pwd"]
+  - name: "bash"
+    args: ["ls", "-al"]
+  - name: "bash"
+    args: ["touch", "building.txt"]
+  - name: "bash"
+    args: ["ls", "-al"]
+
 images:
   - >-
     $_AR_HOSTNAME/$PROJECT_ID/cloud-run-source-deploy/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
