@@ -1,13 +1,24 @@
 steps:
   # Docker Build
-  - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '-t', 'asia-northeast1-docker.pkg.dev/$PROJECT_ID/practice/python-image:$COMMIT_SHA', '.' ]
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "-t",
+        "asia-northeast1-docker.pkg.dev/$PROJECT_ID/practice/python-image:$COMMIT_SHA",
+        ".",
+      ]
     timeout: 500s
+    options:
+      logging: CLOUD_LOGGING_ONLY #サービスアカウントを指定するので、ログ保存先を制限
 
     # Docker Push
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['push',
-           'asia-northeast1-docker.pkg.dev/$PROJECT_ID/practice/python-image:$COMMIT_SHA']
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "push",
+        "asia-northeast1-docker.pkg.dev/$PROJECT_ID/practice/python-image:$COMMIT_SHA",
+      ]
 
   # Artifact RegistryのコンテナイメージをCloud Runにデプロイ
   - name: "gcr.io/cloud-builders/gcloud"
@@ -20,9 +31,6 @@ steps:
       - "--region"
       - "asia-northeast1"
 
-  # images:
-  # - 'asia-northeast1-docker.pkg.dev/$PROJECT_ID/practice/python-image:$COMMIT_SHA'
-
   - name: "bash"
     args: ["echo", "Hello, World!"]
   - name: "bash"
@@ -34,5 +42,5 @@ steps:
   - name: "bash"
     args: ["ls", "-al"]
 
-  options:
-    logging: CLOUD_LOGGING_ONLY #サービスアカウントを指定するので、ログ保存先を制限
+  # images:
+  # - 'asia-northeast1-docker.pkg.dev/$PROJECT_ID/practice/python-image:$COMMIT_SHA'
