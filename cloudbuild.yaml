@@ -20,8 +20,8 @@ steps:
       - "--region"
       - "asia-northeast1"
 
-  images:
-  - 'asia-northeast1-docker.pkg.dev/$PROJECT_ID/practice/python-image:$COMMIT_SHA'
+  # images:
+  # - 'asia-northeast1-docker.pkg.dev/$PROJECT_ID/practice/python-image:$COMMIT_SHA'
 
   - name: "bash"
     args: ["echo", "Hello, World!"]
