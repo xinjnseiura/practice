@@ -10,7 +10,7 @@ env:
   GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
   SERVICE: p-python
   REGION: asia-northeast1
-  IMAGE: asia-northeast1-docker.pkg.dev/cloud-run-source-deploy/${{ secrets.GCP_PROJECT }}/p-python
+  IMAGE: asia-northeast1-docker.pkg.dev/${{ secrets.GCP_PROJECT }}/cloud-run-source-deploy/practice/p-python
   TAG: production
 
 jobs:
