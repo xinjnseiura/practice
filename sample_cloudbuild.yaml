@@ -34,11 +34,9 @@ steps:
       - "--quiet"
     id: Deploy
     entrypoint: gcloud
-
 images:
   - >-
     $_AR_HOSTNAME/$PROJECT_ID/cloud-run-source-deploy/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
-timeout: 500s
 options:
   substitutionOption: ALLOW_LOOSE
   logging: CLOUD_LOGGING_ONLY #サービスアカウントを指定するので、ログ保存先を制限
