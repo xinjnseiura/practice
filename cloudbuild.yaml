@@ -2,6 +2,7 @@ steps:
   # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
     args: [ 'build', '-t', 'asia-northeast1-docker.pkg.dev/$PROJECT_ID/practice/python-image:$COMMIT_SHA', '.' ]
+    timeout: 500s
 
     # Docker Push
   - name: 'gcr.io/cloud-builders/docker'
@@ -33,6 +34,5 @@ steps:
   - name: "bash"
     args: ["ls", "-al"]
 
-  timeout: 500s
   options:
     logging: CLOUD_LOGGING_ONLY #サービスアカウントを指定するので、ログ保存先を制限
