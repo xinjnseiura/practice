@@ -9,6 +9,7 @@ env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT }}
   GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
   SERVICE: p-python
+  SERVICE_ACCOUNT: p-develop@zenhope-dev.iam.gserviceaccount.com
   REGION: asia-northeast1
   IMAGE: asia-northeast1-docker.pkg.dev/${{ secrets.GCP_PROJECT }}/cloud-run-source-deploy/practice/p-python
   TAG: production
@@ -24,7 +25,7 @@ jobs:
       - name: Setup Cloud SDK
         uses: google-github-actions/auth@v1
         with:
-          service_account: p-develop@zenhope-dev.iam.gserviceaccount.com
+          service_account: ${{ secrets.SERVICE_ACCOUNT }}
           project_id: ${{ secrets.PROJECT_ID }}
           credentials_json: ${{ secrets.GCP_SA_KEY }}
 
@@ -49,6 +50,7 @@ jobs:
             --image ${{ env.IMAGE }}:${{ github.sha }} \
             --project ${{ env.PROJECT_ID }} \
             --region ${{ env.REGION }} \
+            --service-account=${{ secrets.SERVICE_ACCOUNT }} \
             --platform managed \
             --no-traffic \
             --tag ${{ env.TAG }}
