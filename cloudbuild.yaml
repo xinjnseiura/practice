@@ -43,5 +43,5 @@ steps:
   # images:
   # - 'asia-northeast1-docker.pkg.dev/$PROJECT_ID/practice/python-image:$COMMIT_SHA'
 
-  # options:
-  # logging: CLOUD_LOGGING_ONLY #サービスアカウントを指定するので、ログ保存先を制限
+  - options:
+    logging: CLOUD_LOGGING_ONLY #サービスアカウントを指定するので、ログ保存先を制限
