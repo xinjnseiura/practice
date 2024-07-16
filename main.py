@@ -7,8 +7,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
-    name = os.environ.get("NAME", "SHIN")
-    return "Hello {}! ENJOY LIFE!".format(name)
+    name = os.environ.get("NAME", "未定")
+    return "メンテナンス中。完了予定時刻:{}".format(name)
 
 
 if __name__ == "__main__":
