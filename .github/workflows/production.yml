@@ -52,5 +52,6 @@ jobs:
             --region ${{ env.REGION }} \
             --service-account=${{ secrets.SERVICE_ACCOUNT }} \
             --platform managed \
-            --no-traffic \
             --tag ${{ env.TAG }}
+
+# --no-traffic \ オプション
